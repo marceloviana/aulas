@@ -1,0 +1,72 @@
+.cabecalho {
+    width: 100%;
+    padding: 50px;
+    background-color: cadetblue;
+    font-size: 65px;
+    text-align: center;
+}
+
+.corpo {
+    margin: 30px;
+    background-color: red;
+    padding: 100px;
+    color: white;
+}
+
+form {
+    display: block;
+    margin: auto;
+    width: 10em;
+    margin-top: 4em;    
+}
+
+ol, ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.5em;
+}
+ul > li {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: .1em;
+    background-color: #646464;
+    justify-content: center;
+    cursor:pointer;
+    color: #FFF;
+}
+ul > li:hover {
+    background-color: #413e3b;
+}
+
+.calculadora {
+    display: table;
+    width: 19em;
+    border: 1px solid;
+    margin: auto;
+    background-color: rgb(136, 136, 136);
+}
+.tela {
+    min-height: 1.5em;
+    padding: .1em;
+    text-align: right;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 3em;
+    word-break: break-word;
+}
+
+.resultado, .operadores > ul > li {
+    background-color: #f28f13;
+}
+.operadores > ul > li:hover {
+    background-color: #413e3b;
+}

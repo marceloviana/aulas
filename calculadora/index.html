@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="assets/css/style.css">
+   <title>Calculadora</title>
+ </head>
+ <body>
+
+<div class="calculadora">
+   <div class="tela">
+      <span id="operacao"> </span>
+   </div>
+   <div class="operadores">
+      <ul>
+         <li onclick="limpar()">AC</li>
+         <li>*</li>
+         <li>-</li>
+         <li>+</li>
+      </ul>      
+   </div>
+   <div class="numeros">
+      <ul>
+         <li>1</li>
+         <li>2</li>
+         <li>3</li>
+      </ul>
+      <ul>
+         <li>4</li>
+         <li>5</li>
+         <li>6</li>
+      </ul>
+      <ul>
+         <li>7</li>
+         <li>8</li>
+         <li>9</li>
+      </ul>
+      <ul>
+         <li>0</li>
+         <li class="operadores resultado" onclick="somar()">=</li>
+      </ul>
+   </div>
+</div>
+
+ </body>
+ </html>
+ <script src="assets/js/javascript.js"></script>
