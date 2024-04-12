@@ -29,7 +29,7 @@ body {
     color: #FFF
 }
 
-.contato {width: 100%;background-color: #00ffff3b;padding: .5em;text-align: center;font-size: 1.5em;font-weight: bold;margin-bottom: 1em;}
+.contato {width: 100%;background-color: #00ffff3b;padding: .5em;text-align: center;font-size: 1.5em;font-weight: bold;color: #fff;margin-bottom: 1em;}
 .rodape {display: block;width: 21em;/* border: 1px solid red; */margin: auto;}
 p {
     margin: 0;
