@@ -1,0 +1,69 @@
+body {
+    background-image: url("https://s1.picswalls.com/wallpapers/2016/06/16/hd-planet-wallpaper_115143837_310.jpg");
+}
+
+.cabecalho {
+    width: 100%;
+    height: 1.5em;
+    background-color: #0094ff;
+    font-size: 4em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.corpo {display: flex;max-width: 30em;margin: auto;margin-top: 3em;margin-bottom: 3em;}
+
+.corpo_conteudo {
+    display: block;
+    margin: 1em;
+    background-color: #216c53;
+    padding: 2em;
+    cursor: pointer;
+    color: #fff;
+}
+.corpo_conteudo:hover {
+    background-color: #000;
+    color: #FFF
+}
+
+.contato {width: 100%;background-color: #00ffff3b;padding: .5em;text-align: center;font-size: 1.5em;font-weight: bold;margin-bottom: 1em;}
+.rodape {display: block;width: 21em;/* border: 1px solid red; */margin: auto;}
+p {
+    margin: 0;
+    padding: 0;    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+form > input {
+    padding: .5em;
+    margin: 0.1em;
+}
+
+form > textarea {
+    padding: 1em;
+    height: 6em;
+}
+
+form > select {
+    padding: 1em;
+    height: 4em;
+    margin: .1em;
+}
+
+button {
+    padding: 1em;
+    margin-bottom: 3em;
+    background: aquamarine;
+    cursor: pointer;
+    margin: .1em;
+}
+
+button:hover {
+    background-color: yellow;
+}
