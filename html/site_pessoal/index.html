@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu site</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/style2.css">
 </head>
 <body>
    
@@ -15,14 +14,14 @@
     
     <div class="corpo">
         <div class="corpo_conteudo">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <p id="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
         </div>
         <div class="corpo_conteudo">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
         </div>
     </div>
 
-    <div class="contato"><p>Contato</p></div>
+    <div class="contato"><p id="nome">Aqui aparecerá seu nome</p><button id="botao" onclick="trocarNome()">Trocar nome</button></div>
 
     <div class="rodape">
         <form action="">
@@ -35,10 +34,19 @@
                 <option value="">Belo Horizonte</option>
                 <option value="">Contagem</option>
             </select>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Escreva sua mensagem"></textarea>
+            <textarea name="" cols="30" rows="10" placeholder="Escreva sua mensagem"></textarea>
             <button>Enviar</button>
         </form>
     </div>
 
 </body>
 </html>
+<script>
+
+ function trocarNome() {
+
+    cor = window.prompt("Qual cor? ")
+    document.getElementById("botao").style.backgroundColor = cor
+ }
+ 
+</script>
