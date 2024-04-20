@@ -1,0 +1,54 @@
+div {
+   
+}
+.cabecalho {
+    width: 100%;
+    display: inline-block;
+    height: 6em;
+    background: #224f40;
+}
+.produtos {
+    display: inline-block;
+}
+
+.card-img-top {
+    width: 100%;
+    max-height: 21em;
+    border: 7px solid #000;
+    border-radius: 50px 50px 20px 20px !important;
+}
+
+.card-body {
+    min-height: 17em;
+}
+
+.btn-primary-personally {
+    bottom: 10px;
+    position: absolute;
+}
+
+.preco {
+    position: absolute;
+    bottom: 4em;
+}
+
+#carrinho {
+    display: flex;
+    justify-content: right;
+    margin: 1em;
+    color: #fff;
+}
+#contador {
+    position: absolute;
+    right: 14px;
+    background: #FFF;
+    color: red;
+    top: 18px;
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    border-radius: 20px;
+}
+.dropdown {
+
+}
