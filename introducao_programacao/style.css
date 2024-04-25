@@ -1,54 +1,117 @@
-div {
-   
-}
+div {}
+
 .cabecalho {
     width: 100%;
     display: inline-block;
     height: 6em;
+    position: fixed;
     background: #224f40;
+    z-index: 1;
+    top: 0;
+    box-shadow: #7e7e7e 7px 7px 25px;
+    background-color: #fff;
 }
+
 .produtos {
     display: inline-block;
+    margin: .5em;
+    min-height: 17em;
+    /* border: 1px solid #090909; */
+}
+#produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1em;
+    padding-top: 6em;
 }
 
 .card-img-top {
-    width: 100%;
-    max-height: 21em;
-    border: 7px solid #000;
+    /* max-width: 12em; */
+    max-height: 17em;
+    border: 3px solid #0000001a;
     border-radius: 50px 50px 20px 20px !important;
 }
 
 .card-body {
-    min-height: 17em;
+    max-width: 12em;
+    display: flex;
+    flex-direction: column;
+    min-height: 22em;
+    justify-content: space-between;
+}
+
+.card {
+    border: none;
+    align-items: center;
+    /* margin: 1em; */
+    /* min-height: 35em; */
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
 
 .btn-primary-personally {
-    bottom: 10px;
-    position: absolute;
+    /* bottom: -3em; */
+    /* position: absolute; */
 }
 
 .preco {
-    position: absolute;
-    bottom: 4em;
+    /* position: absolute; */
+    /* bottom: 2em; */
+    /* background-color: #050505; */
+    /* color: #FFF; */
 }
 
 #carrinho {
     display: flex;
     justify-content: right;
-    margin: 1em;
-    color: #fff;
+    margin: 3em 1em 1em 1em;
+    color: #4a4a4a;
 }
+
 #contador {
     position: absolute;
     right: 14px;
-    background: #FFF;
-    color: red;
-    top: 18px;
+    background: #c91616;
+    color: white;
+    top: 52px;
     width: 23px;
     height: 23px;
     text-align: center;
     border-radius: 20px;
 }
-.dropdown {
 
+.dropdown {
+    position: absolute;
+    background: #ffffff;
+    width: 16em;
+    max-height: 20em;
+    right: 0;
+    top: 6.1em;
+    box-shadow: #7e7e7e 22px 7px 25px;
+    background-color: #fff;
+    text-align: center;
+    padding-top: 2em;
+    display: none;
+    transition: 2s;
+    overflow: auto;
+}
+
+#dropdownItens {
+    list-style-type: decimal;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    /* overflow: auto; */
+}
+#dropdownItens li {
+    list-style-type: none;
+    padding: .5em;
+    background: lemonchiffon;
+    margin: .5em;
+}
+
+#grupoCarrinho {
+    cursor: pointer;
 }
