@@ -64,10 +64,11 @@ div {}
 }
 
 #carrinho {
-    display: flex;
-    justify-content: right;
-    margin: 3em 1em 1em 1em;
+    position: absolute;
+    margin: 2.5em 1em 1em 1em;
     color: #4a4a4a;
+    width: 3em;
+    right: 0;
 }
 
 #contador {
@@ -75,27 +76,35 @@ div {}
     right: 14px;
     background: #c91616;
     color: white;
-    top: 52px;
+    top: 43px;
     width: 23px;
     height: 23px;
     text-align: center;
     border-radius: 20px;
+    z-index: 1;
 }
 
 .dropdown {
     position: absolute;
-    background: #ffffff;
+    color: #FFF;
     width: 16em;
     max-height: 20em;
     right: 0;
     top: 6.1em;
     box-shadow: #7e7e7e 22px 7px 25px;
-    background-color: #fff;
+    background-color: #373535;
     text-align: center;
     padding-top: 2em;
-    display: none;
-    transition: 2s;
     overflow: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+}
+
+#grupoCarrinho:hover > .dropdown {
+    visibility: visible;
+    opacity: 1;
+    transition: 1s;
 }
 
 #dropdownItens {
@@ -107,11 +116,16 @@ div {}
 }
 #dropdownItens li {
     list-style-type: none;
-    padding: .5em;
-    background: lemonchiffon;
+    padding: .1em;
+    background: #3f4b42;
     margin: .5em;
 }
 
 #grupoCarrinho {
     cursor: pointer;
+}
+
+.btn-warning:hover{
+    background-color: #d6d7d1;
+    transition: 1s;
 }

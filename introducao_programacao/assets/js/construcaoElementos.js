@@ -29,8 +29,6 @@ const produtos = [
     }
 ]
 
-var itensCarrinho = []
-
 for (let produto of produtos) {    
     let CARD = `<div class='produtos'> \
     <div class='card'>\
@@ -39,49 +37,10 @@ for (let produto of produtos) {
     <h5 class='card-title'>${produto.nome}</h5>\
     <p class='card-text'>${produto.descricao}</p>\
     <p class='card-text preco'>R$ ${produto.preco}</p>\
-    <a href='#' class='btn btn-primary btn-primary-personally' data-nome-produto='${produto.id}' data-bs-toggle='modal' data-bs-target='#exampleModal'>Adicionar no carrinho</a>\
+    <a href='#' class='btn btn-primary btn-primary-personally' data-id-produto='${produto.id}' data-bs-toggle='modal' data-bs-target='#exampleModal'>Adicionar no carrinho</a>\
     </div\
     ></div>\
     </div>`
     document.getElementById("produtos").innerHTML += CARD
 }
 
-
-var botoes = document.querySelectorAll(".btn-primary-personally")
-
-for (let botao of botoes) {
-    botao.addEventListener('click', function (data) {
-        let nomeproduto = data.target
-        document.getElementsByClassName("modal-body")[0].innerHTML = nomeproduto.getAttribute("data-nome-produto")
-    })
-}
-
-
-document.getElementById("adicionarCarrinho").addEventListener('click', function () {
-    let nome = document.getElementsByClassName("modal-body")[0].innerText
-    itensCarrinho.push(nome)
-    document.getElementById("contador").innerText = itensCarrinho.length
-    console.log(itensCarrinho)
-
-    
-    document.getElementById("dropdownItens").innerHTML = ""
-    for (let item of itensCarrinho) {
-        console.log(item)
-        document.getElementById("dropdownItens").innerHTML += `<li>${item} - R$0000</li>`
-    }
-    document.getElementById("dropdown").innerHTML += "<button type=button class=btn>Finalizar</button>"
-
-})
-
-
-document.getElementById("grupoCarrinho").addEventListener('click', function () {
-
-    displayAtual = document.getElementById("dropdown").style.display
-    
-    if (displayAtual == "none") {
-        document.getElementById("dropdown").style.display = "block"
-    } else {
-        document.getElementById("dropdown").style.display = "none"
-    }
-
-})
