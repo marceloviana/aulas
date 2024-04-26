@@ -15,7 +15,9 @@ function adicionarItemCarrinho (id) {
     }    
 }
 
-const removeItenCarrinho = (indice) => {
+function removeItenCarrinho (indice) {
+    document.getElementById("dropdownItens").innerHTML = ""
+
     itensCarrinho.splice(indice, 1)
     for (let item of itensCarrinho) {
         document.getElementById("dropdownItens").innerHTML += `<li>${item.nome} - R$ ${item.preco}</li>`
