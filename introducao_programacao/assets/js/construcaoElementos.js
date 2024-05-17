@@ -1,4 +1,6 @@
-function renderProdutos (produtos) {
+var produtos = null
+
+function renderProdutos () {
 
     for (let produto of produtos) {    
         let CARD = `<div class='produtos'> \
@@ -8,9 +10,9 @@ function renderProdutos (produtos) {
         <h5 class='card-title'>${produto.nome}</h5>\
         <p class='card-text'>${produto.descricao}</p>\
         <p class='card-text preco'>R$ ${produto.preco}</p>\
-        <a href='#' class='btn btn-primary btn-primary-personally' data-id-produto='${produto.id}' data-bs-toggle='modal' data-bs-target='#exampleModal'>Adicionar no carrinho</a>\
-        </div\
-        ></div>\
+        <a href='#' class='btn btn-primary btn-primary-personally botao-abre-modal' data-id-produto='${produto.id}' data-bs-toggle='modal' data-bs-target='#exampleModal'>Adicionar no carrinho</a>\
+        </div>\
+        </div>\
         </div>`
         document.getElementById("produtos").innerHTML += CARD
     }
@@ -19,5 +21,8 @@ function renderProdutos (produtos) {
 
 
 axios.get("http://localhost:8000/v1/produtos").then( response => {
-    renderProdutos(response.data)
+    produtos = response.data
+    renderProdutos()
+    adicionarEventoCards()
 })
+

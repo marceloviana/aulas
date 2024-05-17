@@ -1,4 +1,5 @@
-div {}
+
+
 
 .cabecalho {
     width: 100%;
@@ -128,4 +129,13 @@ div {}
 .btn-warning:hover{
     background-color: #d6d7d1;
     transition: 1s;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: #c91616;
+    }
+    #contador {
+        background: blue;
+    }
 }
