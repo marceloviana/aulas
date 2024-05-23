@@ -40,3 +40,13 @@ function adicionarEventoCards () {
 
     }    
 }
+
+function finalizarCompra() {
+
+    axios.post("http://localhost:8000/v1/finalizar_compra", itensCarrinho).then(response => {
+        console.log(response)
+    })
+
+}
+
+

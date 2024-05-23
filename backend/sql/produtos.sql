@@ -47,3 +47,27 @@ INSERT INTO produtos (nome, descricao, preco, imagem, quantidade) values ("A Fé
 
 select pessoa.nome, produtos.nome, produtos.preco  from pedidos join pessoa on pessoa.`id` = pedidos.pessoa_id
 join produtos on produtos.id = pedidos.produto_id;
+
+
+CREATE TABLE turmaformacao.ordem_servico (
+	id INT auto_increment NOT NULL,
+	numero_ordem INT NOT NULL,
+	pessoa_id INT NOT NULL,
+	CONSTRAINT ordem_servico_pk PRIMARY KEY (id),
+	CONSTRAINT ordem_servico_unique UNIQUE KEY (numero_ordem),
+	CONSTRAINT ordem_servico_pessoa_FK FOREIGN KEY (pessoa_id) REFERENCES turmaformacao.pessoa(id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE turmaformacao.status (
+	id INT auto_increment NOT NULL,
+	status varchar(50) NULL,
+	CONSTRAINT status_pk PRIMARY KEY (id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;

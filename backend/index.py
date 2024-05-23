@@ -1,5 +1,14 @@
 from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
+import mysql.connector, json
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="remoto",
+  database="turmaformacao"
+)
+
 
 app = FastAPI()
 app.add_middleware(
@@ -17,11 +26,27 @@ def cadastro_usuario(usuario = Form(), senha = Form()):
 
 @app.get("/v1/produtos")
 def produtos():
+    meuCursor = mydb.cursor()
+    meuCursor.execute("SELECT * FROM produtos")
+    meuResultado = meuCursor.fetchall()
+    meuCursor.close()
 
-    # 1. conecta ao banco de dados turmaformacao. Como conectar o Python no banco de dados Mysql?
-    # 2. lista todos os produtos
-    # 3. entrega todos os produtos para o frontend
-    # 4. registra meus pedidos
-    # 5. lista os pedidos, relacionando-os entre pessoa e produto.
+    resultado_formatado = []
+    for item in meuResultado:
+        resultado_formatado.append({
+            "id": item[0],
+            "nome": item[1],
+            "descricao": item[2],
+            "preco": item[3],
+            "imagem": item[4],
+            "quantidade": item[5]
+        })
 
-    return []
+    return resultado_formatado
+
+
+@app.post("/v1/finalizar_compra")
+def finalizar_compra(itens_carrinho):
+    print(itens_carrinho)
+    return "Chegou na API de backend!"
+
