@@ -26,7 +26,6 @@ function removeItenCarrinho (id) {
 function adicionarEventoCards () {
 
     for (let botao of document.querySelectorAll(".botao-abre-modal")) {
-        console.log(botao)
         botao.addEventListener('click', function (data) {
             let produtoId = ~~data.target.getAttribute("data-id-produto") - 1
 
@@ -43,8 +42,9 @@ function adicionarEventoCards () {
 
 function finalizarCompra() {
 
-    axios.post("http://localhost:8000/v1/finalizar_compra", itensCarrinho).then(response => {
-        console.log(response)
+    axios.post("http://localhost:8000/v1/finalizar_compra", {itensCarrinho, id_usuario: 1}).then(response => {
+        alert(response.data)
+        window.location.reload()
     })
 
 }

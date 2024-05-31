@@ -1,6 +1,7 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector, json
+import datetime
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -8,7 +9,6 @@ mydb = mysql.connector.connect(
   password="remoto",
   database="turmaformacao"
 )
-
 
 app = FastAPI()
 app.add_middleware(
@@ -26,11 +26,15 @@ def cadastro_usuario(usuario = Form(), senha = Form()):
 
 @app.get("/v1/produtos")
 def produtos():
+
+    # Consulta no banco de dados
     meuCursor = mydb.cursor()
     meuCursor.execute("SELECT * FROM produtos")
     meuResultado = meuCursor.fetchall()
     meuCursor.close()
+    mydb.commit()
 
+    # formatação do conteúdo para ser consumido pelo frontend.
     resultado_formatado = []
     for item in meuResultado:
         resultado_formatado.append({
@@ -46,7 +50,32 @@ def produtos():
 
 
 @app.post("/v1/finalizar_compra")
-def finalizar_compra(itens_carrinho):
-    print(itens_carrinho)
-    return "Chegou na API de backend!"
+async def finalizar_compra(request: Request):
+    
+    itens_carrinho = await request.json()
+    
+    ordem_servico = str(hash(datetime.datetime.now())).replace("-","")
+    id_pessoa = itens_carrinho['id_usuario']
+    id_produto = itens_carrinho['itensCarrinho']
+    
+    
+    # criando uma ordem de serviço 
+    meuCursor = mydb.cursor()
+    meuCursor.execute(f"insert into ordem_servico (numero_ordem, pessoa_id, status_id) values ({ordem_servico}, {id_pessoa}, 1)")
+
+    # recupera o último ID criado na tabela ordem_servico
+    meuCursor.execute("select id from ordem_servico order by id desc limit 1")
+    ordem_servico_id = meuCursor.fetchall()
+    
+    for i in ordem_servico_id:
+        ordem_servico_id = i[0]
+
+    # adiciona os registro na tabela entidade de relacionamento (pedidos)
+    for item in id_produto:
+        meuCursor.execute(f"insert into pedidos (produto_id, ordem_servico_id) values ({item['id']}, {ordem_servico_id})")
+
+    meuCursor.close()
+    mydb.commit()
+
+    return "Seu pedito foi registrado com sucesso!"
 
