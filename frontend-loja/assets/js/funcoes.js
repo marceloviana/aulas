@@ -14,12 +14,14 @@ function adicionarItemCarrinho (id) {
     const initialValue = 0;
     document.getElementById("dropdownItens").innerHTML = `Total: R$ ${itensCarrinho.reduce((accumulator, currentValue) => accumulator + ~~currentValue.preco, initialValue)}`;
     for (let item of itensCarrinho) {
-        document.getElementById("dropdownItens").innerHTML += `<li>${item.nome} - R$ ${item.preco} <button onclick=removeItenCarrinho(${item.id - 1})>remover</button></li>`
+        document.getElementById("dropdownItens").innerHTML += `<li>${item.nome} - R$ ${item.preco} <button onclick=removeItenCarrinho(${item.id})>remover</button></li>`
     }    
 }
 
-function removeItenCarrinho (id) {
-    itensCarrinho.splice(id, 1)
+function removeItenCarrinho (idItemCarrinho) {
+    
+    itensCarrinho = itensCarrinho.filter((item) => item.id != idItemCarrinho)
+    
     adicionarItemCarrinho(null)
 }
 
@@ -42,6 +44,11 @@ function adicionarEventoCards () {
 
 function finalizarCompra() {
 
+    if (!itensCarrinho.length) {
+        alert("Não há itens no carrinho!")
+        return
+    }
+    
     axios.post("http://localhost:8000/v1/finalizar_compra", {itensCarrinho, id_usuario: 1}).then(response => {
         alert(response.data)
         window.location.reload()
