@@ -1,10 +1,10 @@
-from repository.produtos import ProdutoRepository
+from model.produtos import ProdutosModel
 
 class ProdutoController:
     
-    def pegar_produdos(self):
+    def lista_produdos(self):
         
-        meuResultado = ProdutoRepository().ler("SELECT * FROM produtos")
+        meuResultado = ProdutosModel().lista_produtos()
         # formatação do conteúdo para ser consumido pelo frontend.
         resultado_formatado = []
         for item in meuResultado:

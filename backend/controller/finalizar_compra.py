@@ -1,34 +1,18 @@
-from repository.produtos import ProdutoRepository
+from model.peditos import PedidosModel
+import datetime
 
 class FinalizarCompraController:
-    
-    def pegar_produdos(self):
-            return ProdutoRepository()
         
-    def criar_ordem_servico(self, ordem_servico, id_pessoa, produtos):
-        try:
-            sql = f"insert into ordem_servico (numero_ordem, pessoa_id, status_id) values ({ordem_servico}, {id_pessoa}, 1)"
-            ProdutoRepository().criar(sql)
+    def criar_ordem_servico(self, data):
 
-            # recupera o último ID criado na tabela ordem_servico
-            ordem_servico_id = self.ler_ultimo_registro()
+        ordem_servico = str(hash(datetime.datetime.now())).replace("-","")
+        id_pessoa = data['id_usuario']
+        produtos = data['itensCarrinho']
 
-            for i in ordem_servico_id:
-                ordem_servico_id = i[0]
+        try:            
+            if PedidosModel().criar_pedido(ordem_servico, id_pessoa, produtos):
+                return "Seu pedito foi registrado com sucesso!"
 
-            # adiciona os registro na tabela entidade de relacionamento (pedidos)
-            for item in produtos:
-                FinalizarCompraController().criar_pedido(item['id'], ordem_servico_id)
-            return True
         except Exception as error:
              print(error)
-             return False
-        
-    
-    def ler_ultimo_registro(self):
-         sql = "select id from ordem_servico order by id desc limit 1"
-         return ProdutoRepository().ler(sql)
-
-    def criar_pedido(self, item_produto, ordem_servico_id):
-        sql = f"insert into pedidos (produto_id, ordem_servico_id) values ({item_produto}, {ordem_servico_id})"
-        return ProdutoRepository().criar(sql)
+             return "Não foi possível registrar seu pedito! Tente novamente mais tarde."
