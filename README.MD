@@ -10,6 +10,10 @@ Estrutura do banco de dados - Modelo de entidade relacional (MER):
 
 ![MER](./docs/MER.drawio.svg)
 
+Fluxo entre frontend e backend:
+
+![Rascunhos](./docs/fluxo-frontend-backend.drawio.svg)
+
 Rascunhos gerais:
 
 ![Rascunhos](./docs/comunicação.drawio.svg)
